@@ -4,17 +4,16 @@ import guru.springframework.commands.UnitOfMeasureCommand;
 import guru.springframework.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import guru.springframework.domain.UnitOfMeasure;
 import guru.springframework.repositories.reactive.UnitOfMeasureReactiveRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import reactor.core.publisher.Flux;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -27,7 +26,7 @@ public class UnitOfMeasureServiceImplTest {
     @Mock
     UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
@@ -37,7 +36,7 @@ public class UnitOfMeasureServiceImplTest {
     @Test
     public void listAllUoms() throws Exception {
         //given
-        Set<UnitOfMeasure> unitOfMeasures = new HashSet<>();
+        List<UnitOfMeasure> unitOfMeasures = new ArrayList<>();
         UnitOfMeasure uom1 = new UnitOfMeasure();
         uom1.setId("1");
         unitOfMeasures.add(uom1);

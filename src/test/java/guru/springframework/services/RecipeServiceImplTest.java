@@ -6,8 +6,8 @@ import guru.springframework.converters.RecipeCommandToRecipe;
 import guru.springframework.converters.RecipeToRecipeCommand;
 import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.reactive.RecipeReactiveRepository;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import reactor.core.publisher.Flux;
@@ -16,15 +16,14 @@ import reactor.core.publisher.Mono;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 /**
  * Created by jt on 6/17/17.
  */
@@ -41,7 +40,7 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeCommandToRecipe recipeCommandToRecipe;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
@@ -57,7 +56,7 @@ public class RecipeServiceImplTest {
 
         Recipe recipeReturned = recipeService.findById("1").block();
 
-        assertNotNull("Null recipe returned", recipeReturned);
+        assertNotNull(recipeReturned, "Null recipe returned");
         verify(recipeReactiveRepository, times(1)).findById(anyString());
         verify(recipeReactiveRepository, never()).findAll();
     }
@@ -76,7 +75,7 @@ public class RecipeServiceImplTest {
 
         RecipeCommand commandById = recipeService.findCommandById("1").block();
 
-        assertNotNull("Null recipe returned", commandById);
+        assertNotNull( commandById, "Null recipe returned");
         verify(recipeReactiveRepository, times(1)).findById(anyString());
         verify(recipeReactiveRepository, never()).findAll();
     }

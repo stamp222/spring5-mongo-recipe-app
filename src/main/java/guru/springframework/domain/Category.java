@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jt on 6/13/17.
@@ -17,5 +18,5 @@ public class Category {
     @Id
     private String id;
     private String description;
-    private Set<Recipe> recipes;
+    private List<Recipe> recipes = new ArrayList<>();
 }

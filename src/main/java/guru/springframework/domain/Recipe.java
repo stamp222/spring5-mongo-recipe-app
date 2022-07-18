@@ -5,8 +5,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jt on 6/13/17.
@@ -25,11 +25,11 @@ public class Recipe {
     private String source;
     private String url;
     private String directions;
-    private Set<Ingredient> ingredients = new HashSet<>();
+    private List<Ingredient> ingredients = new ArrayList<>();
     private Byte[] image;
     private Difficulty difficulty;
     private Notes notes;
-    private Set<Category> categories = new HashSet<>();
+    private List<Category> categories = new ArrayList<>();
 
     public void setNotes(Notes notes) {
         if (notes != null) {
